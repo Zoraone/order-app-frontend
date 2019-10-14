@@ -1,0 +1,41 @@
+<div mat-dialog-content class="item">
+  <img src="{{item.imageUrl}}">
+  <h1>{{item.title}}</h1>
+  <p>{{item.itemDescription}}</p>
+  <form id="itemForm" #itemForm="ngForm" (submit)="submit(itemForm)" novalidate>
+    <div *ngFor="let customization of item.customizationList; let customizationIndex = index">
+      <h3>{{customization.title}}</h3>
+
+      <div *ngIf="customization.maxPermitted === 1 && customization.minPermitted === 1; else checkbox">
+        <h5>Choose 1 of the following:</h5>
+        <fieldset ngModelGroup="{{customization.uuid}}">
+          <div *ngFor="let option of customization.options">
+            <input id="{{option.uuid}}" type="radio" name="{{customization.uuid}}" value="{{option.uuid}}" ngModel
+              required />
+            {{option.title}}
+            <span *ngIf="option.price != 0" class="price">+{{option.price/100 | currency}}</span>
+          </div>
+        </fieldset>
+
+        <div *ngIf="isSubmitted && itemForm.invalid">
+          <p class="warning">Please select a value.</p>
+        </div>
+      </div>
+
+      <ng-template #checkbox>
+        <h5>Choose up to {{customization.maxPermitted}} of the following:</h5>
+        <fieldset ngModelGroup="{{customization.uuid}}">
+          <div *ngFor="let option of customization.options">
+            <input id="{{option.uuid}}" type="checkbox" name="{{option.uuid}}" value="{{option.uuid}}" ngModel />
+            {{option.title}}
+            <span *ngIf="option.price != 0" class="price">+{{option.price/100 | currency}}</span>
+          </div>
+        </fieldset>
+      </ng-template>
+
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button form="itemForm">Add to Order</button>
+</div>

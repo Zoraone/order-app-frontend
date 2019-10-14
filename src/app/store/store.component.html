@@ -1,0 +1,27 @@
+<div id="container">
+  <div id="store">
+    <h1>{{store.title}}</h1>
+    <ul class="sections">
+      <li *ngFor="let section of store.sections">
+        <ul *ngIf="section.isOnSale">
+          <li *ngFor="let subsection of section.subsections">
+            <h3>{{subsection.title}}</h3>
+            <ul class="items">
+              <li class="item" *ngFor="let item of subsection.items" (click)="openDialog(item.uuid)">
+                <img *ngIf="item.imageUrl" class="item-image" src="{{item.imageUrl}}">
+                <span class="item-details">
+                  <h4>{{item.title}}</h4>
+                  {{item.description}}
+                  <br>
+                  <br>
+                  {{item.price/100 | currency:false:'symbol':'1.2-2'}}
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <app-cart id="cart" [cartItems]="cartItems" [orderId]="orderId"></app-cart>
+</div>

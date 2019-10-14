@@ -1,0 +1,25 @@
+<ul>
+  <h2>Cart</h2>
+  <label>
+    Name: <input type="text" [formControl]="name">
+  </label>
+  <li *ngFor="let item of cartItems">
+    <h4>{{item.title}}<span class="price">{{item.price/100 | currency}}</span></h4>
+    <ul>
+      <li *ngFor="let customization of item.customizations">
+        <h5>{{customization.title}}</h5>
+        <ul>
+          <li *ngFor="let option of customization.options">
+            <h6>{{option.title}}<span *ngIf="option.price" class="price">{{option.price/100 | currency}}</span></h6>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <div id="total">
+    <span class="price">Total: {{total/100 | currency}}</span>
+  </div>
+  <div id="submit" (click)="submit()">
+    <button mat-flat-button>Submit</button>
+  </div>
+</ul>
