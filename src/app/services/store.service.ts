@@ -5,12 +5,13 @@ import { catchError } from 'rxjs/operators';
 
 import { Store } from '../store/store';
 
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class StoreService {
   constructor(private http: HttpClient) { }
 
-  private storeUrl = 'http://localhost:8080/api/store/get/';
+  private storeUrl = environment.apiUrl + '/api/store/get/';
 
   getStore(uuid: string): Observable<Store> {
     return this.http.get<Store>(this.storeUrl + uuid).pipe(

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "uberorders": {
+    "order-app-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/uberorders",
+            "outputPath": "dist/order-app-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "uberorders:build"
+            "browserTarget": "order-app-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "uberorders:build:production"
+              "browserTarget": "order-app-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "uberorders:build"
+            "browserTarget": "order-app-frontend:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "uberorders:serve"
+            "devServerTarget": "order-app-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "uberorders:serve:production"
+              "devServerTarget": "order-app-frontend:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "uberorders"
+  "defaultProject": "order-app-frontend"
 }

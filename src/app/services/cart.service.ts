@@ -4,13 +4,15 @@ import { Cart } from '../cart/cart';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   constructor(private http: HttpClient) { }
 
-  private cartUrl = 'http://localhost:8080/api/cart/add/';
+  private cartUrl = environment.apiUrl + '/api/cart/add/';
 
   addCart(cart: Cart): Observable<Cart> {
     const httpOptions = {

@@ -5,11 +5,13 @@ import { catchError } from 'rxjs/operators';
 
 import { Order } from '../order/order';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({ providedIn: 'root' })
 export class OrderService {
   constructor(private http: HttpClient) { }
 
-  private ordersUrl = 'http://localhost:8080/api/order/get/';
+  private ordersUrl =  environment.apiUrl + '/api/order/get/';
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.ordersUrl).pipe(
