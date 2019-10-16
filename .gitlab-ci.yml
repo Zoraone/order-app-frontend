@@ -3,14 +3,24 @@ image: node:latest
 stages:
   - build
 
-cache:
-  paths:
-    - node_modules/
-
-install_dependencies:
+build:
   stage: build
   script:
-    - yarn install
-  artifacts:
+    - apt update
+    - apt-get install -y nodejs
+    - npm install -y npm@6.11.0
+    - nodejs -v
+    - npm -v
+    - ls -la -F
+    - npm ci
+    - npx ng build --prod
+  cache:
     paths:
       - node_modules/
+  artifacts:
+    when: on_success
+    expire_in: 1 day
+    paths:
+      - dist/
+  only:
+    - master
