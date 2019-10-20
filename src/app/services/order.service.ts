@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class OrderService {
   constructor(private http: HttpClient) { }
 
-  private ordersUrl =  environment.apiUrl + '/api/order/get/';
+  private ordersUrl = environment.apiUrl + '/api/order/get/';
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.ordersUrl).pipe(
