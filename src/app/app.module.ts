@@ -3,10 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatDialogModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { OrderComponent } from './order/order.component';
@@ -32,7 +34,9 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     MatListModule,
     MatButtonModule,
-    ReactiveFormsModule
+    MatCardModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   entryComponents: [
     ItemComponent

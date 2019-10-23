@@ -51,3 +51,9 @@ li {
   padding: 10px;
   flex-grow: 1;
 }
+
+mat-card img {
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+}

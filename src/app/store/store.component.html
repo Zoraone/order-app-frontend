@@ -6,18 +6,19 @@
         <ul *ngIf="section.isOnSale">
           <li *ngFor="let subsection of section.subsections">
             <h3>{{subsection.title}}</h3>
-            <ul class="items">
-              <li class="item" *ngFor="let item of subsection.items" (click)="openDialog(item.uuid)">
-                <img *ngIf="item.imageUrl" class="item-image" src="{{item.imageUrl}}">
-                <span class="item-details">
-                  <h4>{{item.title}}</h4>
+            <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="left">
+              <mat-card fxFlex="0 1 calc(40% - 20px)" class="item-card" *ngFor="let item of subsection.items"
+                (click)="openDialog(item.uuid)">
+                <mat-card-title>{{item.title}}</mat-card-title>
+                <img *ngIf="item.imageUrl" mat-card-image [src]="item.imageUrl">
+                <mat-card-content>
                   {{item.description}}
                   <br>
                   <br>
-                  {{item.price/100 | currency:'NZD':'symbol':'1.2-2'}}
-                </span>
-              </li>
-            </ul>
+                  {{item.price/100 | currency:'NZD':'symbol-narrow':'1.2-2'}}
+                </mat-card-content>
+              </mat-card>
+            </div>
           </li>
         </ul>
       </li>

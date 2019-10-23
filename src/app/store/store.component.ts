@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { StoreService } from '../services/store.service';
@@ -23,7 +22,6 @@ export class StoreComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-    private route: ActivatedRoute,
     private dialog: MatDialog
   ) {
     this.cartItems = [];
@@ -35,7 +33,6 @@ export class StoreComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.uuid = this.route.snapshot.paramMap.get('id');
     this.getStore();
   }
 
