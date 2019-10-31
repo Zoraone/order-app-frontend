@@ -96,7 +96,7 @@ export class ItemComponent implements OnInit {
   }
 
   private getCustomizationDetails(uuid: string): Customization {
-    return this.item.customizationList.find(customization => {
+    return this.item.customizationsList.find(customization => {
       if (uuid === customization.uuid) {
         return true;
       }

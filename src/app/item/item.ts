@@ -5,7 +5,7 @@ export class Item {
     public price: number,
     public itemDescription: string,
     public imageUrl: string,
-    public customizationList: Customization[]
+    public customizationsList: Customization[]
   ) { }
 }
 

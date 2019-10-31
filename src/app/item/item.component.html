@@ -3,7 +3,7 @@
   <h1>{{item.title}}</h1>
   <p>{{item.itemDescription}}</p>
   <form id="itemForm" #itemForm="ngForm" (submit)="submit(itemForm)" novalidate>
-    <div *ngFor="let customization of item.customizationList; let customizationIndex = index">
+    <div *ngFor="let customization of item.customizationsList; let customizationIndex = index">
       <h3>{{customization.title}}</h3>
 
       <div *ngIf="customization.maxPermitted === 1 && customization.minPermitted === 1; else checkbox">
