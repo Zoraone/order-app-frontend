@@ -37,7 +37,17 @@ export class CartComponent implements OnInit, DoCheck {
     }
   }
 
+  remove(item: CartItem) {
+    this.cartItems.splice(this.cartItems.indexOf(item), 1);
+  }
+
   submit() {
+    if (this.name.value === '') {
+      return false;
+    }
+    if (this.cartItems.length === 0) {
+      return false;
+    }
     const cart: Cart = {
       orderId: this.orderId,
       username: this.name.value,

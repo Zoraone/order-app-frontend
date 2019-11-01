@@ -9,6 +9,8 @@ import { MatDialogModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { OrderComponent } from './order/order.component';
@@ -35,6 +37,8 @@ import { CartComponent } from './cart/cart.component';
     MatListModule,
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     FlexLayoutModule
   ],

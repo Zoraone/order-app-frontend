@@ -1,25 +1,34 @@
-<ul>
-  <h2>Cart</h2>
-  <label>
-    Name: <input type="text" [formControl]="name">
-  </label>
-  <li *ngFor="let item of cartItems">
-    <h4>{{item.title}}<span class="price">{{item.price/100 | currency}}</span></h4>
-    <ul>
-      <li *ngFor="let customization of item.customizations">
-        <h5>{{customization.title}}</h5>
-        <ul>
-          <li *ngFor="let option of customization.options">
-            <h6>{{option.title}}<span *ngIf="option.price" class="price">{{option.price/100 | currency}}</span></h6>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <div id="total">
-    <span class="price">Total: {{total/100 | currency}}</span>
+<h2>Cart</h2>
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input matInput [formControl]="name">
+</mat-form-field>
+<mat-list>
+  <div *ngFor="let item of cartItems">
+    <mat-list-item>
+      <h4 matLine>{{item.title}}</h4><span class="price">{{item.price/100 | currency}}</span>
+    </mat-list-item>
+    <mat-list style="margin-left:30px;">
+      <div *ngFor="let customization of item.customizations">
+        <mat-list-item>
+          <h5 matLine>{{customization.title}}</h5>
+        </mat-list-item>
+        <mat-list>
+          <div *ngFor="let option of customization.options">
+            <mat-list-item>
+              <h6 matLine>{{option.title}} </h6><span *ngIf="option.price" class="price">{{option.price/100 | currency}}</span>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </div>
+    </mat-list>
+    <button mat-flat-button (click)="remove(item)">Remove</button>
   </div>
-  <div id="submit" (click)="submit()">
-    <button mat-flat-button>Submit</button>
-  </div>
-</ul>
+</mat-list>
+<div id="total">
+  Total: <span class="price">{{total/100 | currency}}</span>
+</div>
+<br>
+<div id="submit" (click)="submit()">
+  <button mat-flat-button>Submit</button>
+</div>
