@@ -54,6 +54,5 @@ export class CartComponent implements OnInit, DoCheck {
       items: this.cartItems
     };
     this.cartService.addCart(cart).subscribe();
-    alert(JSON.stringify(cart));
   }
 }
