@@ -7,6 +7,15 @@ h5, h6 {
   padding: 0;
 }
 
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
+li {
+  margin-left: 0px;
+}
+
 .price {
   float: right;
 }

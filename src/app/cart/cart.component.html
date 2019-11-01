@@ -1,31 +1,27 @@
-<h2>Cart</h2>
+<h2 class="mat-title">Cart</h2>
 <mat-form-field>
   <mat-label>Name</mat-label>
   <input matInput [formControl]="name">
 </mat-form-field>
-<mat-list>
-  <div *ngFor="let item of cartItems">
-    <mat-list-item>
-      <h4 matLine>{{item.title}}</h4><span class="price">{{item.price/100 | currency}}</span>
-    </mat-list-item>
-    <mat-list style="margin-left:30px;">
-      <div *ngFor="let customization of item.customizations">
-        <mat-list-item>
-          <h5 matLine>{{customization.title}}</h5>
-        </mat-list-item>
-        <mat-list>
-          <div *ngFor="let option of customization.options">
-            <mat-list-item>
-              <h6 matLine>{{option.title}} </h6><span *ngIf="option.price" class="price">{{option.price/100 | currency}}</span>
-            </mat-list-item>
-          </div>
-        </mat-list>
-      </div>
-    </mat-list>
+<ul>
+  <mat-card *ngFor="let item of cartItems" class="mat-body-1">
+    <div class="mat-body-2">{{item.title}}<span class="price">{{item.price/100 | currency}}</span></div>
+    <ul>
+      <li *ngFor="let customization of item.customizations">
+        {{customization.title}}
+        <ul>
+          <li *ngFor="let option of customization.options">
+            {{option.title}}<span *ngIf="option.price" class="price">{{option.price/100 | currency}}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
     <button mat-flat-button (click)="remove(item)">Remove</button>
-  </div>
-</mat-list>
-<div id="total">
+  </mat-card>
+</ul>
+<mat-divider></mat-divider>
+<br>
+<div id="total" class="mat-body-1">
   Total: <span class="price">{{total/100 | currency}}</span>
 </div>
 <br>
