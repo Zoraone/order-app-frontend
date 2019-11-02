@@ -1,6 +1,7 @@
 export interface Cart {
   orderId: string;
   username: string;
+  total?: number;
   items: CartItem[];
 }
 

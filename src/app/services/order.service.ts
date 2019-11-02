@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Order } from '../order/order';
+import { Cart } from '../cart/cart';
 
 import { environment } from '../../environments/environment';
 
@@ -12,6 +13,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   private ordersUrl = environment.apiUrl + '/api/order/get/';
+  private orderCartUrl = environment.apiUrl + '/api/order/carts/get/';
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.ordersUrl).pipe(
@@ -22,6 +24,12 @@ export class OrderService {
   getOrder(id: string): Observable<Order> {
     return this.http.get<Order>(this.ordersUrl + id).pipe(
       catchError(this.handleError<Order>('getOrder'))
+    );
+  }
+
+  getOrderCarts(id: string): Observable<Cart[]> {
+    return this.http.get<Cart[]>(this.orderCartUrl + id).pipe(
+      catchError(this.handleError<Cart[]>('getOrderCarts'))
     );
   }
 

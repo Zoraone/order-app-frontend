@@ -1,0 +1,18 @@
+<h1 class="mat-display-1">Carts for {{id}}</h1>
+<ul class="mat-body">
+  <li *ngFor="let cart of orderCarts">
+    <h3>{{cart.username}}</h3>
+    <div *ngFor="let item of cart.items">
+      {{item.title}} {{item.price/100 | currency:'NZD':'symbol-narrow':'1.2-2'}}
+      <div *ngFor="let customization of item.customizations">
+        {{customization.title}}
+        <div *ngFor="let option of customization.options">
+          {{option.title}} {{option.price/100 | currency:'NZD':'symbol-narrow':'1.2-2'}}
+        </div>
+      </div>
+    </div>
+    Delivery: {{delivery/100 | currency:'NZD':'symbol-narrow':'1.2-2'}}<br>
+    Total: {{cart.total/100 | currency:'NZD':'symbol-narrow':'1.2-2'}}
+    <mat-divider></mat-divider>
+  </li>
+</ul>

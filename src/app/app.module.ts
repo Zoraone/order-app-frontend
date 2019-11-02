@@ -18,6 +18,7 @@ import { StoreComponent } from './store/store.component';
 import { ItemComponent } from './item/item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CartComponent } from './cart/cart.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CartComponent } from './cart/cart.component';
     OrderComponent,
     StoreComponent,
     ItemComponent,
-    CartComponent
+    CartComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
